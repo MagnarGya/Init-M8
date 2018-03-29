@@ -1,0 +1,31 @@
+﻿<Window x:Class="Init_M8.NewEffect"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Init_M8"
+        mc:Ignorable="d"
+        Title="New Effect" Height="180" Width="340">
+    <StackPanel>
+        <DockPanel>
+            <TextBlock Text="Effect target:"/>
+            <ComboBox Name="TargetBox" Margin="5,5,5,5"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="Effect source:"/>
+            <ComboBox Name="SourceBox" Margin="5,5,5,5"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="Name"/>
+            <TextBox Name="namebox" Margin="5,5,5,5"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="Duration"/>
+            <TextBox Name="DuraBox" Margin="5,5,5,5"/>
+        </DockPanel>
+        <DockPanel>
+            <Button Content="Add" Width="145" Click="addClick"></Button>
+            <Button Content="Cancel" Click="cancelClick"></Button>
+        </DockPanel>
+    </StackPanel>
+</Window>

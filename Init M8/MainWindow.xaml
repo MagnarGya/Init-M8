@@ -1,0 +1,106 @@
+﻿<Window x:Class="Init_M8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Init_M8"
+        mc:Ignorable="d"
+        Title="Initiative Tracker" Height="Auto" Width="Auto">
+    <StackPanel Orientation="Vertical" >
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New Group" Click="NewGroup"/>
+                    <MenuItem Header="_Load Group" Click="loadGroup"/>
+                    <MenuItem Header="_Save Group" Click="SaveGroup"/>
+                    <Separator />
+                    <MenuItem Name="newEncounter" Header="_New Encounter" Click="NewEncounter"/>
+                    <Separator />
+                    <MenuItem Header="_Exit" Click="CloseBtn" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Border BorderThickness="2" Background="AliceBlue" Margin="0,0,0,1">
+            <DockPanel>
+                <Button Name ="advanceTurn" DockPanel.Dock="Right" Click="AdvanceTurn">Advance Turn</Button>
+                <TextBlock Text="Initiative tracker"/>
+            </DockPanel>
+        </Border>
+        <DockPanel>
+            <GroupBox DockPanel.Dock="Right" VerticalContentAlignment="Stretch">
+                <StackPanel Orientation="Vertical">
+                    <ComboBox SelectedIndex="0" SelectionChanged="changeListView">
+                        <ComboBoxItem>Characters</ComboBoxItem>
+                        <ComboBoxItem>Status Effects</ComboBoxItem>
+                    </ComboBox>
+                    <ListView Name="CharacterList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Initiative" DisplayMemberBinding="{Binding initiative}"/>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"/>
+                                <GridViewColumn Header="Add">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="addToCombat" Content="to battle"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ListView Name="StatusManipList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"/>
+                                <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding duration}"/>
+                                <GridViewColumn Header="Target" DisplayMemberBinding="{Binding target.name}"/>
+                                <GridViewColumn Header="Source" DisplayMemberBinding="{Binding source.name}"/>
+                                <GridViewColumn Header="Modify">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="ModifyStatus" Content="Modify"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </StackPanel>
+            </GroupBox>
+            <ListView Name="InitiativeList" DockPanel.Dock="Left">
+                <ListView.View >
+                    <GridView>
+                        <GridViewColumn Header="Initiative" DisplayMemberBinding="{Binding initiative}"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"></GridViewColumn>
+                        <GridViewColumn Header="Health" DisplayMemberBinding="{Binding health}"/>
+                        <GridViewColumn Header="Change Health">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="changeHealth" Content="Change"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Status Effect" Width="Auto" DisplayMemberBinding="{Binding status}"/>
+                        <GridViewColumn Header="Add Effect">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="addEffect" Content="Add"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Remove from combat">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="removeFromCombat" Content="Remove"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </DockPanel>
+        <TextBlock Name="TurnaRound" VerticalAlignment="Bottom"/>
+    </StackPanel>
+
+</Window>

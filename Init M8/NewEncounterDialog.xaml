@@ -1,0 +1,27 @@
+﻿<Window x:Class="Init_M8.NewEncounterDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Init_M8"
+        mc:Ignorable="d"
+        Title="New Encounter" Height="155" Width="300">
+    <StackPanel>
+        <DockPanel>
+            <TextBlock Text="Name"/>
+            <TextBox Name="namebox" Margin="5,0,5,5"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="Initiative"/>
+            <TextBox Name="initBox" Margin="5,0,5,5"/>
+        </DockPanel>
+        <DockPanel>
+            <TextBlock Text="Health"/>
+            <TextBox Name="healthBox" Margin="5,0,5,5"/>
+        </DockPanel>
+        <Button Name="addButton" Content="Add" Width="50" Click="addClick" HorizontalAlignment="Right"></Button>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,2,0,2"/>
+        <Button Content="Done" Width="50" Click="doneClick" HorizontalAlignment="Right"></Button>
+        <ListView Name="memberListView" SelectionChanged="selectionChanged"/>
+    </StackPanel>
+</Window>
