@@ -44,15 +44,18 @@ namespace Init_M8
                 {
                     string name = playerlist[0].name;
                     int health = playerlist[0].health;
+                    int armor = playerlist[0].armor;
                     playerlist.RemoveAt(0);
                     namebox.Text = name;
                     healthBox.Text = health.ToString();
+                    armorBox.Text = armor.ToString();
                     Keyboard.Focus(initBox);
                 }
                 else
                 {
                     namebox.Text = "";
                     healthBox.Text = "";
+                    armorBox.Text = "";
                     Keyboard.Focus(namebox);
                 }
                 initBox.Text = "";
@@ -62,6 +65,7 @@ namespace Init_M8
                 namebox.Text = chosen.name;
                 initBox.Text = chosen.initiative.ToString();
                 healthBox.Text = chosen.health.ToString();
+                armorBox.Text = chosen.armor.ToString();
                 addButton.Content = "Save Change";
                 Keyboard.Focus(namebox);
             }
@@ -82,9 +86,10 @@ namespace Init_M8
                 string name = namebox.Text;
                 int initiative = Convert.ToInt32(initBox.Text);
                 int health = Convert.ToInt32(healthBox.Text);
+                int armor = Convert.ToInt32(armorBox.Text);
                 if (chosen == null)
                 {
-                    characters.Add(new character(name, initiative, health));
+                    characters.Add(new character(name, initiative, health, armor));
                 }
                 else
                 {
@@ -109,7 +114,8 @@ namespace Init_M8
             {
                 string name = namebox.Text;
                 int health = Convert.ToInt32(healthBox.Text);
-                playerlist.Insert(0, new player(name, health));
+                int armor = Convert.ToInt32(armorBox.Text);
+                playerlist.Insert(0, new player(name, health, armor));
             }
             catch { }
             chosen = memberListView.SelectedItem as character;

@@ -121,7 +121,7 @@ namespace Init_M8
                 foreach(String c in characters)
                 {
                     String[] cargs = c.Split(':');
-                    tempList.Add(new player(cargs[0], int.Parse(cargs[1])));
+                    tempList.Add(new player(cargs[0], int.Parse(cargs[1]), int.Parse(cargs[2])));
                 }
                 newEncounter.IsEnabled = true;
                 playerList = tempList;
@@ -197,11 +197,11 @@ namespace Init_M8
                         }
                     }
                 }
-                characterlist.Add(new character((senderchar.name + i), senderchar.initiative, senderchar.health));
+                characterlist.Add(new character((senderchar.name + i), senderchar.initiative, senderchar.health, senderchar.armor));
             }
             else
             {
-                characterlist.Add(new character(senderchar.name, senderchar.initiative, senderchar.health));
+                characterlist.Add(new character(senderchar.name, senderchar.initiative, senderchar.health, senderchar.armor));
             }
             character first = characterlist.First();
             sortList();
@@ -324,17 +324,19 @@ namespace Init_M8
         public string name { get; set; }
         public int initiative { get; set; }
         public int health { get; set; }
+        public int armor { get; set; }
 
         public string status { get; set; }
 
         private List<Status> statusList;
         private List<Status> causeList;
-        public character(string _name, int _initiative, int _health)
+        public character(string _name, int _initiative, int _health, int _armor)
         {
             name = _name;
             initiative = _initiative;
             health = _health;
             status = "";
+            armor = _armor;
             statusList = new List<Status>();
             causeList = new List<Status>();
         }
@@ -388,7 +390,7 @@ namespace Init_M8
         }
         public override string ToString()
         {
-            return "Name: " + name + " Health: " + health + " Initiative: " + initiative;
+            return "Name: " + name + " Health: " + health + " Initiative: " + initiative + " Armor: " + armor;
         }
     }
     public class Status

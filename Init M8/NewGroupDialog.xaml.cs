@@ -38,9 +38,10 @@ namespace Init_M8
             {
                 string name = namebox.Text;
                 int health = Convert.ToInt32(healthBox.Text);
+                int armor = Convert.ToInt32(armorBox.Text);
                 if (chosen == null)
                 {
-                    players.Add(new player(name, health));
+                    players.Add(new player(name, health, armor));
                 }
                 else
                 {
@@ -51,6 +52,7 @@ namespace Init_M8
                 }
                 namebox.Text = "";
                 healthBox.Text = "";
+                armorBox.Text = "";
                 Keyboard.Focus(namebox);
                 memberListView.ItemsSource = players;
                 refreshWindow();
@@ -68,13 +70,14 @@ namespace Init_M8
             chosen = memberListView.SelectedItem as player;
             namebox.Text = chosen.name;
             healthBox.Text = chosen.health.ToString();
+            armorBox.Text = chosen.armor.ToString();
             addButton.Content = "Save Change";
         }
 
         void refreshWindow()
         {
             memberListView.Items.Refresh();
-            Height = 135 + (20 * players.Count);
+            Height = 150 + (20 * players.Count);
         }
 
         void doneClick(object sender, RoutedEventArgs args)
@@ -88,14 +91,16 @@ namespace Init_M8
     {
         public string name { get; set; }
         public int health { get; set; }
-        public player(string _name, int _health)
+        public int armor { get; set; }
+        public player(string _name, int _health, int _armor)
         {
             name = _name;
             health = _health;
+            armor = _armor;
         }
         public override string ToString()
         {
-            return "Name: " + this.name + " Health: " + this.health;
+            return "Name: " + this.name + " Health: " + this.health + " Armor: " + this.armor ;
         }
     }
 }
