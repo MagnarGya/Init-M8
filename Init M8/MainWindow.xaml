@@ -72,7 +72,8 @@
                 <ListView.View >
                     <GridView>
                         <GridViewColumn Header="Initiative" DisplayMemberBinding="{Binding initiative}"/>
-                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"></GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="AC" DisplayMemberBinding="{Binding armor}"/>
                         <GridViewColumn Header="Health" DisplayMemberBinding="{Binding health}"/>
                         <GridViewColumn Header="Change Health">
                             <GridViewColumn.CellTemplate>

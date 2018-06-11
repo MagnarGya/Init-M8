@@ -19,6 +19,10 @@
             <TextBlock Text="Health"/>
             <TextBox Name="healthBox" Margin="5,0,5,5"/>
         </DockPanel>
+        <DockPanel>
+            <TextBlock Text="Armor"/>
+            <TextBox Name="armorBox" Margin="5,0,5,5"/>
+        </DockPanel>
         <Button Name="addButton" Content="Add" Width="50" Click="addClick" HorizontalAlignment="Right"></Button>
         <Border BorderBrush="Black" BorderThickness="1" Margin="0,2,0,2"/>
         <Button Content="Done" Width="50" Click="doneClick" HorizontalAlignment="Right"></Button>
