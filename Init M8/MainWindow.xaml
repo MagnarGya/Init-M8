@@ -13,6 +13,7 @@
                     <MenuItem Header="_New Group" Click="NewGroup"/>
                     <MenuItem Header="_Load Group" Click="loadGroup"/>
                     <MenuItem Header="_Save Group" Click="SaveGroup"/>
+                    <MenuItem Name="editGroup" Header="_Edit Group" Click="EditGroup"/>
                     <Separator />
                     <MenuItem Name="newEncounter" Header="_New Encounter" Click="NewEncounter"/>
                     <Separator />

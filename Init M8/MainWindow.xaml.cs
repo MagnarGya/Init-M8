@@ -37,9 +37,11 @@ namespace Init_M8
             round = 0;
             advanceTurn.IsEnabled = false;
             newEncounter.IsEnabled = false;
+            editGroup.IsEnabled = false;
             StatusManipList.Visibility = Visibility.Collapsed;
             statuslist = new List<Status>();
             StatusManipList.ItemsSource = statuslist;
+            
             isInitializing = false;
         }
 
@@ -93,6 +95,12 @@ namespace Init_M8
 
         }
 
+        void EditGroup(object sender, RoutedEventArgs args)
+        {
+            EditGroupDialog egd = new EditGroupDialog(playerList, getNames);
+            egd.ShowDialog();
+        }
+
         void SaveGroup(object sender, RoutedEventArgs args)
         {
             //Something with the playerlist
@@ -123,7 +131,10 @@ namespace Init_M8
                     String[] cargs = c.Split(':');
                     tempList.Add(new player(cargs[0], int.Parse(cargs[1])));
                 }
+
                 newEncounter.IsEnabled = true;
+                advanceTurn.IsEnabled = false;
+                editGroup.IsEnabled = true;
                 playerList = tempList;
             }
         }
@@ -133,6 +144,7 @@ namespace Init_M8
             playerList = players;
             newEncounter.IsEnabled = true;
             advanceTurn.IsEnabled = false;
+            editGroup.IsEnabled = true;
         }
         void addEffect(object sender, RoutedEventArgs args)
         {
